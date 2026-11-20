@@ -1,0 +1,33 @@
+def is_suitable_for_light_clothes(temp_c):
+    """
+    Determines if the temperature is suitable for wearing light clothes.
+    Criteria:
+    - Suitable if temperature is between 20°C and 30°C (inclusive).
+    """
+    return 20 <= temp_c <= 30
+
+def main():
+    try:
+        # Prompt user for temperature
+        temp_input = input("Enter the current temperature (in °C): ").strip()
+        
+        # Validate input
+        if not temp_input.replace('.', '', 1).lstrip('-').isdigit():
+            print("Invalid input. Please enter a numeric value.")
+            return
+        
+        temp_c = float(temp_input)
+
+        # Check suitability
+        if is_suitable_for_light_clothes(temp_c):
+            print(f"{temp_c}°C is suitable for wearing light clothes.")
+        elif temp_c < 20:
+            print(f"{temp_c}°C is too cool for light clothes. Consider warmer clothing.")
+        else:
+            print(f"{temp_c}°C is too hot for light clothes. Consider breathable fabrics and hydration.")
+
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+
+if __name__ == "__main__":
+    main()
